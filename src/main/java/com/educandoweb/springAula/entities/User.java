@@ -3,20 +3,32 @@ package com.educandoweb.springAula.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "tb_user")
 public class User implements Serializable {
 	
 	// OBJETOS A SEREM TRANSFORMADOS EM CADEIAS DE BYTES, PARA TRAFEGAR NA REDE, GRAVAR EM ARQUIVOS E ETC... //
 	private static final long serialVersionUID = 1L;
 	
+	@Id //CHAVE PRIMARIA DA TABELA //
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
 	private String phone;
 	private String password;
 	
+	// CONSTRUTOR VAZIO //
 	public User() {
 	}
-
+	// CONSTRUTORES //
 	public User(Long id, String name, String email, String phone, String password) {
 		this.id = id;
 		this.name = name;
@@ -24,7 +36,7 @@ public class User implements Serializable {
 		this.phone = phone;
 		this.password = password;
 	}
-
+	// GETTERS E SETTERS
 	public Long getId() {
 		return id;
 	}
@@ -64,7 +76,8 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	// HASHCODE E EQUALS
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -81,6 +94,8 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 	
 	
 
