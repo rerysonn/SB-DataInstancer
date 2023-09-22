@@ -12,10 +12,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.educandoweb.springAula.entities.Category;
 import com.educandoweb.springAula.entities.Order;
+import com.educandoweb.springAula.entities.Product;
 import com.educandoweb.springAula.entities.User;
 import com.educandoweb.springAula.entities.enums.OrderStatus;
 import com.educandoweb.springAula.repositories.CategoryRepository;
 import com.educandoweb.springAula.repositories.OrderRepository;
+import com.educandoweb.springAula.repositories.ProductRepository;
 import com.educandoweb.springAula.repositories.UserRepository;
 
 @Configuration // CONFIG EXPECIFICA DE TESTE //
@@ -30,6 +32,9 @@ public class TestConfig implements CommandLineRunner {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	
 	// TUDO OQ COLOCAR DENTRO DO METODO, SERA EXECUTADO QUANDO A APLICAÇÃO FOR EXECUTADA //
@@ -41,11 +46,15 @@ public class TestConfig implements CommandLineRunner {
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
 		
-		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, ""); 
+		Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, ""); 
+		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, ""); 
+		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
+		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 		
 		// INSTANCIAR O BANCO DE DADOS COM USUARIOS //
 		User u1 = new User(null, "Davi Santos", "davi@gmail.com", "977389474", "paysandu");
-		User u2 = new User(null, "Pedro goncalves", "pedro@gmail.com", "977389474", "345535");
+		User u2 = new User(null, "Pedro Sherring", "pedro@gmail.com", "977389474", "345535");
 		
 		// INSTANCIAR O BANCO DE DADOS COM PEDIDOS ASSOCIADAS AOS USUARIOS //
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),OrderStatus.PAID, u1);
@@ -55,6 +64,8 @@ public class TestConfig implements CommandLineRunner {
 		// SALVAR AS INTANCIAS NO BANCO DE DADOS 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
 	}
 	
