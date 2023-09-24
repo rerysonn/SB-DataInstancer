@@ -51,6 +51,21 @@ public class TestConfig implements CommandLineRunner {
 		Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, ""); 
 		Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
 		Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+	
+		// SALVAR AS INTANCIAS NO BANCO DE DADOS 
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		
+		// ASSOCIAÇÃO DE CATEGORIAS COM PRODUTOS
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
+		// SALVAR AS INTANCIAS NO BANCO DE DADOS 
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 		
 		// INSTANCIAR O BANCO DE DADOS COM USUARIOS //
 		User u1 = new User(null, "Davi Santos", "davi@gmail.com", "977389474", "paysandu");
@@ -64,8 +79,8 @@ public class TestConfig implements CommandLineRunner {
 		// SALVAR AS INTANCIAS NO BANCO DE DADOS 
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
-		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
-		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+		
+		
 		
 	}
 	
