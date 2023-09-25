@@ -75,7 +75,8 @@ public class TestConfig implements CommandLineRunner {
 		
 		// INSTANCIAR O BANCO DE DADOS COM USUARIOS //
 		User u1 = new User(null, "Davi Santos", "davi@gmail.com", "977389474", "paysandu");
-		User u2 = new User(null, "Pedro Sherring", "pedro@gmail.com", "977389474", "345535");
+		User u2 = new User(null, "Pedro Sherring", "pedro@gmail.com", "993839388", "345535");
+		User u3 = new User(null, "Mickaely Tobelem", "mickaely@gmail.com", "97838365", "totozinha");
 		
 		// INSTANCIAR O BANCO DE DADOS COM PEDIDOS ASSOCIADAS AOS USUARIOS //
 		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"),OrderStatus.PAID, u1);
@@ -83,7 +84,7 @@ public class TestConfig implements CommandLineRunner {
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),OrderStatus.WAITING_PAYMENT, u1);
 		
 		// SALVAR OS PEDIDOS NO BANCO DE DADOS 
-		userRepository.saveAll(Arrays.asList(u1, u2));
+		userRepository.saveAll(Arrays.asList(u1, u2, u3));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		
 		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice()); 
