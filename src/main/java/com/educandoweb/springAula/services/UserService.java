@@ -13,6 +13,8 @@ import com.educandoweb.springAula.repositories.UserRepository;
 import com.educandoweb.springAula.services.exceptions.DatabaseException;
 import com.educandoweb.springAula.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 // @Component // REGISTRA A CLASSE COMO COMPONENTE DO SPRING E PODERA SER INJETADO AUTOMATICAMENTE PELO @AUTOWIRED //
 @Service // REGISTRAR UM SERVIÇO NA CAMADA DE SERVIÇO //
 public class UserService {
@@ -48,9 +50,13 @@ public class UserService {
 	
 	//ATUALIZAR O USUARIO
 	public User update(Long id, User obj) {
-		User entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+	}catch(EntityNotFoundException e) {
+		 throw new ResourceNotFoundException(id);
+		}
 	}
 
 	private void updateData(User entity, User obj) {
