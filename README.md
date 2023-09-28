@@ -11,7 +11,7 @@ A aplicação DataInstancer oferece uma experiência simplificada e poderosa par
 
 ## Back end:
 - Criação das Entidades: Desenvolvemos entidades de usuário e pedido, cada uma com seus atributos específicos. As entidades são mapeadas para tabelas no banco de dados.
-- Métodos CRUD: Implementamos operações CRUD (Create, Read, Update, Delete) para ambas as entidades. Isso permite a criação, consulta, atualização e exclusão de registros no banco de dados.
+- Métodos CRUD: Implementamos operações CRUD (Create, Read, Update, Delete) para a entidade "Users". Isso permite a criação, consulta, atualização e exclusão de registros no banco de dados.
 - Tratamento de Exceções: Para garantir a robustez do aplicativo, tratamos exceções personalizadas para lidar com cenários de erro de forma elegante e informativa.
 - Recursos e Serviços de Cada Entidade: Organizamos o código em recursos e serviços separados para cada entidade (usuário e pedido). Isso ajuda a manter uma estrutura limpa e facilita a manutenção.
 
